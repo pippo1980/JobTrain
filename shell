@@ -1,5 +1,6 @@
 profile=$1
 
+##kill process
 PID=`ps -ef | grep node | grep $profile | grep -v ' grep' | awk '{print $2}'`
 if [ ! -e $PID ]
 	then
@@ -9,5 +10,9 @@ else
 	    echo "$profile not run"
 fi
 
+##update code
+git pull
+
+##start server
 log_path="/dev/null"
 node app.js --profile=$profile >> $log_path 2>&1 &
