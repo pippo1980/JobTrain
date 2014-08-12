@@ -1,15 +1,15 @@
 /**
  * Created by pippo on 14-8-12.
  */
-var profile_file = "dev.json";
+var profile = "dev";
 
 process.argv.forEach(function (value, index, array) {
-    if (value.indexOf("--profile=") > 0) {
-        profile_file = value.replace("--profile=", "");
+    if (value.indexOf("--profile=") >= 0) {
+        profile = value.replace("--profile=", "");
     }
 });
 
-var settings = require("./profile/" + profile_file);
+var settings = require("./profile/" + profile + ".json");
 console.info("the app settings is:", settings);
 
 module.exports = settings;
