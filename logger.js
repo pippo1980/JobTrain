@@ -15,7 +15,6 @@ if (settings['bunyan'] != null) {
         console.info("the logger:", logger_name, "setting is:", logger_setting);
         loggers[logger_name] = bunyan.createLogger(logger_setting);
     }
-
 }
 
 global_logger = loggers['global'];
@@ -32,11 +31,8 @@ if (global_logger == null) {
     });
 }
 
-exports.get = function (name) {
-
+module.exports.get = function (name) {
     var logger = loggers[name];
-    if (logger == null) {
-        return global_logger;
-    }
-
+    console.log(name, "@@@@", logger)
+    return logger == null ? global_logger : logger;
 }
