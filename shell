@@ -1,4 +1,4 @@
 profile=$1
-log_path="/tmp/node.log"
+log_path="/dev/null"
 
 node app.js --profile=$profile >> $log_path 2>&1 &

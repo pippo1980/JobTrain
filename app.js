@@ -47,8 +47,8 @@ var http = require('http');
 var settings = require("./settings");
 var logger = require("./logger").get(__filename);
 
-var server = http.createServer(app).listen(settings['http']['port'], function () {
-    logger.info('job train server listening on port:[%s]', settings['http']['port']);
+var server = http.createServer(app).listen(settings['http']['port'], settings['http']['host'], 512, function () {
+    logger.info('job train server listening on address:[%s:%s]', settings['http']['host'], settings['http']['port']);
 });
 
 server.on("error", function (event, listener) {

@@ -1,20 +1,7 @@
 {
     "profile": "dev",
-    "bunyan": {
-        "global": {
-            "name": "job-train",
-            "streams": [
-                {
-                    "type": "rotating-file",
-                    "path": "/tmp/job-train.log",
-                    "period": "1h",
-                    "count": 720,
-                    "level": "debug"
-                }
-            ]
-        }
-    },
     "http": {
+        "host": "127.0.0.1",
         "port": 8080
     },
     "webchat": {

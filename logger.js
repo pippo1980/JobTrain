@@ -4,11 +4,6 @@
 var bunyan = require('bunyan');
 var settings = require("./settings");
 
-var console_logger = {
-    "stream": process.stdout,
-    "level": "debug",
-    "src": true
-};
 var loggers = {};
 var global_logger = null;
 
@@ -18,12 +13,6 @@ if (settings['bunyan'] != null) {
     for (var logger_name in logger_settings) {
         var logger_setting = logger_settings[logger_name];
         console.info("the logger:", logger_name, "setting is:", logger_setting);
-
-        if (logger_name == "global") {
-            var streams = [console_logger];
-            logger_setting.streams = streams.concat(logger_setting.streams);
-        }
-
         loggers[logger_name] = bunyan.createLogger(logger_setting);
     }
 
