@@ -39,7 +39,7 @@ app.use(function (err, req, res, next) {
         message: err.message,
         /// development error handler
         /// will print stacktrace
-        error: settings['profile'] === 'dev' ? err : {}
+        error: err
     });
 });
 
