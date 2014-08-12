@@ -1,13 +1,14 @@
 {
+    "profile": "prd",
     "bunyan": {
         "global": {
             "name": "job-train",
             "streams": [
                 {
-                    "stream": "/var/log/job-train.log",
+                    "path": "/var/log/job-train.log",
                     "type": "rotating-file",
                     "period": "1h",
-                    "count": "720",
+                    "count": 720,
                     "level": "info"
                 }
             ]
@@ -16,17 +17,31 @@
             "name": "job-train",
             "streams": [
                 {
-                    "stream": "/var/log/http-access.log",
+                    "path": "/var/log/http-access.log",
                     "type": "rotating-file",
                     "period": "1h",
-                    "count": "720",
+                    "count": 720,
+                    "level": "debug"
+                }
+            ]
+        },
+        "webchat-message": {
+            "name": "job-train",
+            "streams": [
+                {
+                    "path": "/var/log/webchat.log",
+                    "type": "rotating-file",
+                    "period": "1h",
+                    "count": 720,
                     "level": "debug"
                 }
             ]
         }
     },
-
     "http": {
         "port": 8080
+    },
+    "webchat": {
+        "token": ""
     }
 }
