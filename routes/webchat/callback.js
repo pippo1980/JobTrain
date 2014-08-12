@@ -48,7 +48,6 @@ function onMessage(req, res) {
             logger.error("parse msg:[%s] due to error:[%s]", req.body, error);
             return;
         }
-
         message.process(message);
     });
 }
