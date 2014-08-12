@@ -7,7 +7,7 @@
         "url": "git://github.com/pippo1980/JobTrain.git"
     },
     "scripts": {
-        "start": "node ./start.js"
+        "start": "node ./app.js"
     },
     "dependencies": {
         "debug": "~1.0.4",
