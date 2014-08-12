@@ -1,0 +1,29 @@
+{
+    "name": "JobTrain",
+    "version": "0.0.1",
+    "author": "pippo1980.du@gmail.com",
+    "repository": {
+        "type": "git",
+        "url": "git://github.com/pippo1980/JobTrain.git"
+    },
+    "scripts": {
+        "start": "node ./start.js"
+    },
+    "dependencies": {
+        "debug": "~1.0.4",
+        "bunyan": "~1.0.0",
+        "morgan": "~1.2.2",
+        "express": "~4.2.0",
+        "serve-favicon": "~2.0.1",
+        "cookie-parser": "~1.3.2",
+        "body-parser": "~1.6.3",
+        "errorhandler": "~1.1.1",
+        "ejs": "~1.0.0",
+        "socket.io": "1.0.6",
+        "node-uuid": "1.4.1",
+        "sqlite3": "2.2.7",
+        "dotty":"0.0.2",
+        "xml2js":"0.4.4"
+    },
+    "engine": "node >= 0.10.21"
+}

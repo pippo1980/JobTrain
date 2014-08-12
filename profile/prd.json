@@ -1,0 +1,32 @@
+{
+    "bunyan": {
+        "global": {
+            "name": "job-train",
+            "streams": [
+                {
+                    "stream": "/var/log/job-train.log",
+                    "type": "rotating-file",
+                    "period": "1h",
+                    "count": "720",
+                    "level": "info"
+                }
+            ]
+        },
+        "http-access": {
+            "name": "job-train",
+            "streams": [
+                {
+                    "stream": "/var/log/http-access.log",
+                    "type": "rotating-file",
+                    "period": "1h",
+                    "count": "720",
+                    "level": "debug"
+                }
+            ]
+        }
+    },
+
+    "http": {
+        "port": 8080
+    }
+}
