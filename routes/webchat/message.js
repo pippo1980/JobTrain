@@ -25,4 +25,4 @@ Processor.prototype.process = function (message) {
     this.emit(eventType, message);
 };
 
-module.exports = new Process();
+module.exports = new Processor();

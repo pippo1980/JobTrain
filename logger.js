@@ -33,6 +33,5 @@ if (global_logger == null) {
 
 module.exports.get = function (name) {
     var logger = loggers[name];
-    console.log(name, "@@@@", logger)
     return logger == null ? global_logger : logger;
 }
