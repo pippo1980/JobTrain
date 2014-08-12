@@ -2,6 +2,7 @@ var path = require('path');
 var express = require('express');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var settings = require("./settings");
 
 var app = express();
 
@@ -38,13 +39,12 @@ app.use(function (err, req, res, next) {
         message: err.message,
         /// development error handler
         /// will print stacktrace
-        error: app.get('env') === 'development' ? err : {}
+        error: settings['profile'] === 'dev' ? err : {}
     });
 });
 
 ///start http server
 var http = require('http');
-var settings = require("./settings");
 var logger = require("./logger").get(__filename);
 
 var server = http.createServer(app).listen(settings['http']['port'], settings['http']['host'], 512, function () {
