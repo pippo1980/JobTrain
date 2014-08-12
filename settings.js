@@ -5,7 +5,7 @@ var profile_file = "dev.json";
 
 process.argv.forEach(function (value, index, array) {
     if (value.indexOf("--profile=") > 0) {
-        profile_file = value.replace("--profile_file", "");
+        profile_file = value.replace("--profile=", "");
     }
 });
 
