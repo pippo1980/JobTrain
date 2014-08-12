@@ -1,4 +1,13 @@
 profile=$1
-log_path="/dev/null"
 
+PID=`ps -ef | grep node | grep $profile | grep -v ' grep' | awk '{print $2}'`
+if [ ! -e $PID ]
+	then
+	    echo "kill $profile PID is $PID"
+	    kill $PID
+else
+	    echo "$profile not run"
+fi
+
+log_path="/dev/null"
 node app.js --profile=$profile >> $log_path 2>&1 &
