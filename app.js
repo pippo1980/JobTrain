@@ -13,7 +13,6 @@ app.locals = {
 };
 
 /// view engine setup
-app.set('port', process.env.PORT || 8080);
 app.set('views', path.join(__dirname, "views"));
 app.set('view engine', 'ejs');
 
@@ -45,10 +44,11 @@ app.use(function (err, req, res, next) {
 
 ///start http server
 var http = require('http');
+var settings = require("./settings");
 var logger = require("./logger").get(__filename);
 
-var server = http.createServer(app).listen(app.get('port'), function () {
-    logger.info('job train server listening on port:[%s]', app.get('port'));
+var server = http.createServer(app).listen(settings['http']['port'], function () {
+    logger.info('job train server listening on port:[%s]', settings['http']['port']);
 });
 
 server.on("error", function (event, listener) {
