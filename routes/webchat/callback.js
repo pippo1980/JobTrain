@@ -27,13 +27,13 @@ function validateSignature(req) {
 }
 
 function onValidate(req, res) {
-    var echostr = req.param("echostr");
-    if (validateSignature()) {
-        res.send(echostr);
-    } else {
+    if (!validateSignature(req)) {
         res.status = 403;
         res.send("invalid signature");
+        return;
     }
+
+    res.send(req.param("echostr"));
 }
 
 function onMessage(req, res) {
@@ -48,6 +48,8 @@ function onMessage(req, res) {
             logger.error("parse msg:[%s] due to error:[%s]", req.body, error);
             return;
         }
+
         message.process(message);
     });
+
 }
