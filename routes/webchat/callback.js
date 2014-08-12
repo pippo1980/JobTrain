@@ -51,5 +51,4 @@ function onMessage(req, res) {
 
         message.process(message);
     });
-
 }
