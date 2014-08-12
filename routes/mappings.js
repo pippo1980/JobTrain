@@ -12,6 +12,8 @@ router.use(function (req, res, next) {
 
 /*init the router mappings*/
 require('./index').init(router);
+require('./webchat/callback').init(router);
+
 
 /*complete*/
 module.exports = router;
