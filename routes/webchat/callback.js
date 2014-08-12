@@ -21,7 +21,7 @@ function validateSignature(req) {
     var token = settings['webchat']['token'];
     var to_validate_array = [token, timestamp, nonce];
     var to_validate_str = to_validate_array.sort().join("");
-    var expect = crypto.createHash("sha1").update(to_validate_str);
+    var expect = crypto.createHash("sha1").update(to_validate_str).digest('hex');
 
     return expect == signature;
 }
