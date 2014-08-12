@@ -28,7 +28,7 @@ function validateSignature(req) {
 
 function onValidate(req, res) {
     if (!validateSignature(req)) {
-        res.status = 403;
+        res.statusCode = 403;
         res.send("invalid signature");
         return;
     }
@@ -38,7 +38,7 @@ function onValidate(req, res) {
 
 function onMessage(req, res) {
     if (!validateSignature(req)) {
-        res.status = 403;
+        res.statusCode = 403;
         res.send("invalid signature");
         return;
     }
