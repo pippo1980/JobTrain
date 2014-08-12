@@ -12,17 +12,17 @@ function Processor() {
 
 util.inherits(Processor, events.EventEmitter);
 
-Processor.prototype.process = function (message) {
-    logger.debug("receive message:[%s]", message);
-
-    var eventType = message['MsgType']
-
+Processor.prototype.process = function (payload) {
+    var message = payload['xml'];
+    logger.debug("receive message:[%s]", JSON.stringify(message));
+    var messageType = message['MsgType']
     /*如果是事件类型的消息,那么应该使用具体事件作为类型*/
-    if (eventType == 'event') {
-        eventType = message['event'];
+    if (messageType == 'event') {
+        messageType = message['event'];
     }
 
-    this.emit(eventType, message);
+    logger.debug("the message type is:[%s]", messageType);
+    this.emit(messageType, message);
 };
 
 module.exports = new Processor();

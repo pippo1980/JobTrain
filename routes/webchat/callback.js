@@ -28,8 +28,7 @@ function validateSignature(req) {
 
 function onValidate(req, res) {
     if (!validateSignature(req)) {
-        res.statusCode = 403;
-        res.send("invalid signature");
+        res.send(403, "invalid signature");
         return;
     }
 
@@ -37,19 +36,25 @@ function onValidate(req, res) {
 }
 
 function onMessage(req, res) {
-    if (!validateSignature(req)) {
-        res.statusCode = 403;
-        res.send("invalid signature");
-        return;
-    }
+    //    if (!validateSignature(req)) {
+    //        res.statusCode = 403;
+    //        res.send("invalid signature");
+    //        return;
+    //    }
 
-    xml2js.parseString(res.body, {trim: true}, function (error, message) {
+
+    xml2js.parseString(req.body, {trim: true}, function (error, payload) {
         if (error != null) {
             logger.error("parse msg:[%s] due to error:[%s]", req.body, error);
             return;
         }
-
-        message.process(message);
+console.log(message);
+        try {
+            message.process(payload);
+        } catch (error) {
+            logger.error("process msg:[%s] due to error:[%s]", JSON.stringify(payload), error);
+        }
     });
 
+    res.end();
 }
