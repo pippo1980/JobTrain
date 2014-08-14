@@ -57,11 +57,11 @@ server.on("error", function (event, listener) {
 });
 
 //////////////////////////////////////////////
-//var menu = require("./routes/webchat/api.menu");
-//console.log(menu)
-//menu.create(require("./routes/webchat/buttons"), function (success, result, error) {
-//    console.log("#####", success, result, error);
-//});
+var menu = require("./routes/webchat/api.menu");
+console.log(menu)
+menu.create(require("./routes/webchat/buttons"), function (success, result, error) {
+    console.log("#####", success, result, error);
+});
 
 //var http = require("http");
 //
