@@ -36,23 +36,21 @@ function onValidate(req, res) {
 }
 
 function onMessage(req, res) {
-    //    if (!validateSignature(req)) {
-    //        res.statusCode = 403;
-    //        res.send("invalid signature");
-    //        return;
-    //    }
-
+    if (!validateSignature(req)) {
+        res.send(403, "invalid signature");
+        return;
+    }
 
     xml2js.parseString(req.body, {trim: true}, function (error, payload) {
         if (error != null) {
-            logger.error("parse msg:[%s] due to error:[%s]", req.body, error);
+            logger.error("%s:parse msg:[%s] due to error:[%s]", __filename, req.body, error);
             return;
         }
-console.log(message);
+
         try {
             message.process(payload);
         } catch (error) {
-            logger.error("process msg:[%s] due to error:[%s]", JSON.stringify(payload), error);
+            logger.error("%s:process msg:[%s] due to error:[%s]", __filename, JSON.stringify(payload), error);
         }
     });
 

@@ -5,6 +5,10 @@
         "port": 8080
     },
     "webchat": {
-        "token": "918156"
+        "app_id": "wx70694206b7dda51f",
+        "app_secret": "e4cc90440330f4f66c75611444179800",
+        "token": "918156",
+        "api.access_token": "https://api.weixin.qq.com/cgi-bin/token",
+        "api.menu": "https://api.weixin.qq.com/cgi-bin/menu"
     }
 }

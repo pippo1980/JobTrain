@@ -20,8 +20,8 @@ app.set('view engine', 'ejs');
 app.use(express.static(path.join(__dirname, "public")));
 app.use(cookieParser());
 app.use(bodyParser.urlencoded({extended: true}));
-app.use(bodyParser.json({type: 'application/json'}));
-app.use(bodyParser.text({type: 'text/*'}));
+//app.use(bodyParser.json({type: 'application/json'}));
+app.use(bodyParser.text({type: 'application/*'}));
 
 /// route mappings
 app.use(require("./routes/mappings"));
@@ -54,6 +54,33 @@ var server = http.createServer(app).listen(settings['http']['port'], settings['h
 
 server.on("error", function (event, listener) {
     logger.error(event);
-})
+});
 
+//////////////////////////////////////////////
+//var menu = require("./routes/webchat/api.menu");
+//console.log(menu)
+//menu.create(require("./routes/webchat/buttons"), function (success, result, error) {
+//    console.log("#####", success, result, error);
+//});
 
+//var http = require("http");
+//
+//var options = {
+//    "host": "127.0.0.1",
+//    "port": 8080,
+//    "method": "POST",
+//    "path": "/webchat/callback?a=b",
+//    "headers":{
+//        "content-type":"application/xml"
+//    }
+//};
+//var req = http.request(options, function (res) {
+//
+//    res.setEncoding('utf8');
+//    res.on('data', function (chunk) {
+//        logger.info("the create menu result is:[%s]", chunk);
+//    });
+//
+//});
+//req.write("<xml></xml>");
+//req.end();

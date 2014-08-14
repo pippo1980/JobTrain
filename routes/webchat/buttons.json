@@ -1,0 +1,46 @@
+{
+    "button": [
+        {
+            "name": "就业培训",
+            "key": "b_001",
+            "sub_button": [
+                {
+                    "name": "最新优惠",
+
+                    "type": "view",
+                    "url": "http://www.soso.com/"
+                },
+                {
+                    "name": "课程查询",
+                    "key": "b_001_002",
+                    "type": "view",
+                    "url": "http://www.soso.com/"
+                }
+            ]
+        },
+        {
+            "name": "自助服务",
+            "key": "b_002",
+            "sub_button": [
+                {
+                    "name": "绑定/解绑",
+                    "key": "b_002_001",
+                    "type": "click",
+                    "url": "http://www.soso.com/"
+                },
+                {
+                    "name": "我的课程",
+                    "key": "b_002_002",
+                    "type": "view",
+                    "url": "http://www.soso.com/"
+                }
+            ]
+        },
+        {
+            "name": "在线咨询",
+            "key": "b_003",
+            "type": "click",
+            "url": "http://www.soso.com/"
+        }
+    ]
+}
