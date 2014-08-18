@@ -13,7 +13,7 @@ function Processor() {
 util.inherits(Processor, events.EventEmitter);
 
 Processor.prototype.process = function (context) {
-    var xml = context['xml'] = context['message']['xml'];
+    var xml = context['message']['xml'];
     logger.debug({file: __filename, desc: "receive message", xml: xml });
 
     /*如果是事件类型的消息,那么应该使用具体事件作为类型*/
@@ -22,6 +22,7 @@ Processor.prototype.process = function (context) {
         messageType = xml['Event'];
     }
 
+    context['xml'] = xml;
     logger.debug("[%s]:the message type is:[%s]", __filename, messageType);
     this.emit(messageType, context);
 };
