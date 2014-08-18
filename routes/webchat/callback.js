@@ -52,8 +52,8 @@ function onMessage(req, res) {
         try {
             webchat_logger.debug(message);
             message.process({'request': req, 'response': res, 'message': message});
-        } catch (error) {
-            logger.error({file: __filename, desc: "process message due to error", message: message, error: error});
+        } catch (error1) {
+            logger.error({file: __filename, desc: "process message due to error", message: message, error: error1});
         }
     });
 }
