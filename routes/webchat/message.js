@@ -15,7 +15,7 @@ util.inherits(Processor, events.EventEmitter);
 Processor.prototype.process = function (context) {
     var message = context['payload']['xml'];
     context['message'] = message;
-    logger.debug['message']
+    logger.debug(message)
     logger.debug("[%s]:receive message:[%s]", __filename, JSON.stringify(message));
     var messageType = message['MsgType'];
 
