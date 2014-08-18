@@ -15,7 +15,7 @@ util.inherits(Processor, events.EventEmitter);
 Processor.prototype.process = function (context) {
     logger.debug(context)
     var xml = context['message']['xml'];
-    logger.debug({ msg: "receive message", file: __filename, xml: xml });
+    logger.debug({ msg: "on xml message", file: __filename, xml: xml });
 
     /*如果是事件类型的消息,那么应该使用具体事件作为类型*/
     var messageType = xml['MsgType'];
@@ -24,7 +24,7 @@ Processor.prototype.process = function (context) {
     }
 
     context['xml'] = xml;
-    logger.debug({msg: 'emit event', type: messageType, context: context});
+    logger.debug({msg: 'emit event', file: __filename, type: messageType, context: context});
     this.emit(messageType, context);
 };
 
