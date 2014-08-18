@@ -11,11 +11,11 @@ processor.on("subscribe", function (context) {
     logger.debug({file: __filename, info: 'user subscribe us', user: from})
 
     /*因为是回复,所以from/to要倒过来*/
-    var welcome = welcome.create(xml['ToUserName'], from)
-    logger.debug({file: __filename, info: "return welcome msg", welcome: welcome});
+    var reply = welcome.create(xml['ToUserName'], from)
+    logger.debug({file: __filename, info: "reply welcome msg", reply: reply});
 
     var response = context['response'];
-    response.send(welcome);
+    response.send(reply);
     response.end();
 });
 
