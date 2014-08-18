@@ -15,6 +15,9 @@ router.use(function (req, res, next) {
 require('./index').init(router);
 require('./webchat/callback').init(router);
 
+/*admin*/
+require('./admin/login').init(router);
+require('./admin/home').init(router);
 
 /*complete*/
 module.exports = router;

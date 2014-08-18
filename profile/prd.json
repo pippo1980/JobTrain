@@ -39,6 +39,7 @@
         }
     },
     "http": {
+        "address": "http://baojiuye.inmovation.com",
         "host": "0.0.0.0",
         "port": 80
     },

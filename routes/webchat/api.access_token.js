@@ -19,7 +19,7 @@ var access_token_period = 7000 * 1000;
 var access_token_timestamp = new Date().getTime();
 
 function fetchToken(callback) {
-    logger.info({file: __filename, info: "try to get new access token with url", url: url});
+    logger.info({file: __filename, info: "try to get new access token with url", url: api_url});
 
     https.get(api_url, function (res) {
         res.setEncoding('utf8');
