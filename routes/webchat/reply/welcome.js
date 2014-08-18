@@ -18,13 +18,13 @@ module.exports.create = function (from, to) {
                 'item': [
                     {
                         'Title': '欢迎咨询就业直通车',
-                        'PicUrl': 'http://baojiuye.inmovation.com/public/webchat/welcome/title.png',
+                        'PicUrl': 'http://baojiuye.inmovation.com/static/webchat/welcome/title.png',
                         'Url': 'http://baojiuye.inmovation.com/webchat/course.search'
                     },
                     {
                         'Title': 'Android工程师培训',
                         'Description': '意向企业:小米\n预计薪资:5000~10000',
-                        'PicUrl': 'http://baojiuye.inmovation.com/public/webchat/welcome/android.png',
+                        'PicUrl': 'http://baojiuye.inmovation.com/static/webchat/welcome/android.png',
                         'Url': 'http://baojiuye.inmovation.com/webchat/course.search'
                     }
                 ]
