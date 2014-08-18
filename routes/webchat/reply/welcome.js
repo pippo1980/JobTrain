@@ -22,9 +22,17 @@ module.exports.create = function (from, to) {
                         'Url': 'http://baojiuye.inmovation.com/webchat/course.search'
                     },
                     {
-                        'Title': 'Android工程师培训',
-                        'Description': '意向企业:小米\n预计薪资:5000~10000',
+                        'Title': 'Android工程师培训  意向企业:小米  预计薪资:5000~10000',
                         'PicUrl': 'http://baojiuye.inmovation.com/static/webchat/welcome/android.png',
+                        'Url': 'http://baojiuye.inmovation.com/webchat/course.search'
+                    },
+                    {
+                        'Title': 'IOS工程师培训  意向企业:小米  预计薪资:5000~10000',
+                        'PicUrl': 'http://baojiuye.inmovation.com/static/webchat/welcome/ios.png',
+                        'Url': 'http://baojiuye.inmovation.com/webchat/course.search'
+                    },{
+                        'Title': 'JAVA工程师培训  意向企业:小米  预计薪资:5000~10000',
+                        'PicUrl': 'http://baojiuye.inmovation.com/static/webchat/welcome/java.png',
                         'Url': 'http://baojiuye.inmovation.com/webchat/course.search'
                     }
                 ]
