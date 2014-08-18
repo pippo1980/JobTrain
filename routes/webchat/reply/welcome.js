@@ -17,7 +17,7 @@ module.exports.create = function (from, to) {
             'Articles': {
                 'item': [
                     {
-                        'Title': '感谢您关注包就业',
+                        'Title': '欢迎咨询就业直通车',
                         'PicUrl': 'http://baojiuye.inmovation.com/public/webchat/welcome/title.png',
                         'Url': 'http://baojiuye.inmovation.com/webchat/course.search'
                     },
