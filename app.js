@@ -21,7 +21,7 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use(cookieParser());
 app.use(bodyParser.urlencoded({extended: true}));
 //app.use(bodyParser.json({type: 'application/json'}));
-app.use(bodyParser.text("*/*"));
+app.use(bodyParser.text({type: '*/*'}));
 
 /// route mappings
 app.use(require("./routes/mappings"));
