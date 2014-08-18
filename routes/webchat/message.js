@@ -14,7 +14,7 @@ util.inherits(Processor, events.EventEmitter);
 
 Processor.prototype.process = function (context) {
     context['message'] = context['payload']['xml'];
-    logger.debounce({file: __filename, desc: "receive message", xml: message});
+    logger.debounce({file: __filename, desc: "receive message", xml: context['message'] });
 
     /*如果是事件类型的消息,那么应该使用具体事件作为类型*/
     var messageType = context['message']['MsgType'];
