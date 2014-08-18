@@ -21,7 +21,7 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use(cookieParser());
 app.use(bodyParser.urlencoded({extended: true}));
 //app.use(bodyParser.json({type: 'application/json'}));
-app.use(bodyParser.text({type: 'application/*'}));
+app.use(bodyParser.text());
 
 /// route mappings
 app.use(require("./routes/mappings"));
@@ -57,11 +57,11 @@ server.on("error", function (event, listener) {
 });
 
 //////////////////////////////////////////////
-var menu = require("./routes/webchat/api.menu");
-console.log(menu)
-menu.create(require("./routes/webchat/buttons"), function (success, result, error) {
-    console.log("#####", success, result, error);
-});
+//var menu = require("./routes/webchat/api.menu");
+//console.log(menu)
+//menu.create(require("./routes/webchat/buttons"), function (success, result, error) {
+//    console.log("#####", success, result, error);
+//});
 
 //var http = require("http");
 //
