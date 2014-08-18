@@ -5,6 +5,7 @@ var crypto = require('crypto');
 var xml2js = require('xml2js');
 var settings = require("../../settings");
 var logger = require("../../logger").get(__filename);
+var webchat_logger = require("../../logger").get("webchat-message");
 var message = require("./message");
 
 module.exports.init = function (router) {
@@ -49,6 +50,7 @@ function onMessage(req, res) {
         }
 
         try {
+            webchat_logger.debug(message);
             message.process({'request': req, 'response': res, 'message': message});
         } catch (error) {
             logger.error({file: __filename, desc: "process message due to error", message: message, error: error});

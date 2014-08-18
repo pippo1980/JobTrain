@@ -4,7 +4,7 @@
 
 var util = require("util");
 var events = require("events");
-var logger = require("../../logger").get("webchat-message");
+var logger = require("../../logger").get(__filename);
 
 function Processor() {
     events.EventEmitter.call(this);
@@ -14,7 +14,7 @@ util.inherits(Processor, events.EventEmitter);
 
 Processor.prototype.process = function (context) {
     var xml = context['xml'] = context['message']['xml'];
-    logger.debounce({file: __filename, desc: "receive message", xml: xml });
+    logger.debug({file: __filename, desc: "receive message", xml: xml });
 
     /*如果是事件类型的消息,那么应该使用具体事件作为类型*/
     var messageType = xml['MsgType'];
