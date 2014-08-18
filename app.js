@@ -16,7 +16,6 @@ app.locals = {
 /// view engine setup
 app.set('views', path.join(__dirname, "views"));
 app.set('view engine', 'ejs');
-console.log(path.join(__dirname, "/static"))
 app.use("/static", express.static(path.join(__dirname, "/static")));
 app.use(cookieParser());
 app.use(bodyParser.urlencoded({extended: true}));
@@ -57,11 +56,10 @@ server.on("error", function (event, listener) {
 });
 
 //////////////////////////////////////////////
-//var menu = require("./routes/webchat/api.menu");
-//console.log(menu)
-//menu.create(require("./routes/webchat/buttons"), function (success, result, error) {
-//    console.log("#####", success, result, error);
-//});
+var menu = require("./routes/webchat/api.menu");
+menu.create(require("./routes/webchat/buttons"), function (success, result, error) {
+    console.log("#####", success, result, error);
+});
 
 //var http = require("http");
 //

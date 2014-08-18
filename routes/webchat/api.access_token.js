@@ -19,12 +19,13 @@ var access_token_period = 7000 * 1000;
 var access_token_timestamp = new Date().getTime();
 
 function fetchToken(callback) {
-    logger.info("try to get new access token with url:[%s]", api_url);
+    logger.info({file: __filename, info: "try to get new access token with url", url: url});
 
     https.get(api_url, function (res) {
         res.setEncoding('utf8');
         res.on('data', function (chunk) {
             logger.info("the access_token result is:[%s]", chunk);
+            logger.info({file: __filename, info: "receive the access_token result", result: chunk})
             var result = null;
             var error = null;
             try {

@@ -23,7 +23,7 @@ Menu.prototype.create = function (buttons, callback) {
         }
 
         var url = api_url + "/create" + "?access_token=" + access_token;
-        logger.info("try to create buttons:[%s] with url:[%s]", buttons, url);
+        logger.info({file: __filename, info: "try to create menus", url: url, buttons: buttons});
 
         var options = {
             url: url,
@@ -32,7 +32,7 @@ Menu.prototype.create = function (buttons, callback) {
         }
 
         request(options, function (error, response, body) {
-            logger.info("create menu result is:[%s]", body);
+            callback(error == null, body, error);
         })
     });
 
