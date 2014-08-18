@@ -5,6 +5,7 @@ var logger = require("../../logger").get(__filename);
 var processor = require("./processor");
 var welcome = require("./reply/welcome");
 
+logger.info({file: __filename, info: 'add subscribe event processor'});
 processor.on("subscribe", function (context) {
     var xml = context['xml'];
     var from = xml['FromUserName'];
@@ -20,4 +21,3 @@ processor.on("subscribe", function (context) {
     response.end();
 });
 
-logger.info({file: __filename, info: 'add subscribe event processor'});
