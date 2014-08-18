@@ -3,9 +3,9 @@
  */
 var xml2js = require('xml2js');
 var logger = require("../../logger").get(__filename);
-var message = require("./processor");
+var processor = require("./processor");
 
-message.on("subscribe", function (context) {
+processor.on("subscribe", function (context) {
     var xml = context['xml'];
     var from = xml['FromUserName'];
     logger.debug({file: __filename, info: 'user subscribe us', user: from})
