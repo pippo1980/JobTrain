@@ -45,7 +45,7 @@ function onMessage(req, res) {
 
     xml2js.parseString(req.body, {trim: true}, function (error, _message) {
         if (error != null) {
-            logger.error({info: "parse req body due to error", file: __filename, body: req.body, err: error});
+            logger.error({info: "parse req body due to error", file: __filename, body: req.body, err: JSON.toString(error)});
             return;
         }
 
@@ -53,7 +53,7 @@ function onMessage(req, res) {
             webchat_logger.debug(_message);
             _message.process({'request': req, 'response': res, 'message': _message});
         } catch (error) {
-            logger.error({ info: "process message due to error", file: __filename, message: _message, err: error});
+            logger.error({ info: "process message due to error", file: __filename, message: _message, err: JSON.toString(error)});
         }
     });
 }
