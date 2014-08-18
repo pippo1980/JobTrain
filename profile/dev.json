@@ -9,6 +9,7 @@
         "app_secret": "e4cc90440330f4f66c75611444179800",
         "token": "918156",
         "api.access_token": "https://api.weixin.qq.com/cgi-bin/token",
-        "api.menu": "https://api.weixin.qq.com/cgi-bin/menu"
+        "api.menu": "https://api.weixin.qq.com/cgi-bin/menu",
+        "api.send": "https://api.weixin.qq.com/cgi-bin/message/custom/send?access_token=ACCESS_TOKEN"
     }
 }

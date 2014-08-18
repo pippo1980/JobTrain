@@ -33,6 +33,7 @@ function onValidate(req, res) {
     }
 
     res.send(req.param("echostr"));
+    res.end();
 }
 
 function onMessage(req, res) {
@@ -48,11 +49,9 @@ function onMessage(req, res) {
         }
 
         try {
-            message.process(payload);
+            message.process({'request': req, 'response': res, 'payload': payload});
         } catch (error) {
             logger.error("%s:process msg:[%s] due to error:[%s]", __filename, JSON.stringify(payload), error);
         }
     });
-
-    res.end();
 }
