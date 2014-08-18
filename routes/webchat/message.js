@@ -13,13 +13,13 @@ function Processor() {
 util.inherits(Processor, events.EventEmitter);
 
 Processor.prototype.process = function (context) {
-    context['message'] = context['payload']['xml'];
-    logger.debounce({file: __filename, desc: "receive message", xml: context['message'] });
+    var xml = context['xml'] = context['message']['xml'];
+    logger.debounce({file: __filename, desc: "receive message", xml: xml });
 
     /*如果是事件类型的消息,那么应该使用具体事件作为类型*/
-    var messageType = context['message']['MsgType'];
+    var messageType = xml['MsgType'];
     if (messageType == 'event') {
-        messageType = context['message']['Event'] + "/" + context['message']['EventKey'];
+        messageType = xml['Event'];
     }
 
     logger.debug("[%s]:the message type is:[%s]", __filename, messageType);

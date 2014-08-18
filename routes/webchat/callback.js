@@ -42,16 +42,16 @@ function onMessage(req, res) {
         return;
     }
 
-    xml2js.parseString(req.body, {trim: true}, function (error, payload) {
+    xml2js.parseString(req.body, {trim: true}, function (error, message) {
         if (error != null) {
-            logger.error("%s:parse msg:[%s] due to error:[%s]", __filename, req.body, error);
+            logger.error({file: __filename, desc: "parse req body due to error", body: req.body, error: error});
             return;
         }
 
         try {
-            message.process({'request': req, 'response': res, 'payload': payload});
+            message.process({'request': req, 'response': res, 'message': message});
         } catch (error) {
-            logger.error("%s:process msg:[%s] due to error:[%s]", __filename, JSON.stringify(payload), error);
+            logger.error({file: __filename, desc: "process message due to error", message: message, error: error});
         }
     });
 }
