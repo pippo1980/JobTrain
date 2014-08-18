@@ -13,7 +13,7 @@ module.exports.create = function (from, to) {
             'ToUserName': to,
             'CreateTime': new Date().getTime(),
             'MsgType': 'news',
-            'ArticleCount': 2,
+            'ArticleCount': 4,
             'Articles': {
                 'item': [
                     {
