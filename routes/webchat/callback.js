@@ -6,13 +6,19 @@ var xml2js = require('xml2js');
 var settings = require("../../settings");
 var logger = require("../../logger").get(__filename);
 var webchat_logger = require("../../logger").get("webchat-message");
-var message = require("./message");
+var processor = require("./processor");
 
-module.exports.init = function (router) {
+module.exports.init = init;
+
+function init(router) {
+    /*回掉响应*/
     router.get("/webchat/callback", onValidate);
     router.post("/webchat/callback", onMessage);
-}
 
+    /*processor 注册*/
+    require("./processor.text");
+    require("./processor.event.subscribe");
+}
 
 function validateSignature(req) {
     var signature = req.param("signature");
@@ -38,12 +44,12 @@ function onValidate(req, res) {
 }
 
 function onMessage(req, res) {
-    if (!validateSignature(req)) {
+    if (settings['profile'] != 'dev' && !validateSignature(req)) {
         res.send(403, "invalid signature");
         return;
     }
 
-    xml2js.parseString(req.body, {trim: true}, function (error, _message) {
+    xml2js.parseString(req.body, {trim: true}, function (error, message) {
         if (error != null) {
             res.end();
             logger.error({info: "parse req body due to error", file: __filename, body: req.body});
@@ -52,11 +58,11 @@ function onMessage(req, res) {
         }
 
         try {
-            webchat_logger.debug(_message);
-            message.process({'request': req, 'response': res, 'message': _message});
+            webchat_logger.debug(message);
+            processor.process({'request': req, 'response': res, 'message': message});
         } catch (error) {
             res.end();
-            logger.error({ info: "process message due to error", file: __filename, message: _message});
+            logger.error({ info: "process message due to error", file: __filename, message: message});
             logger.error(error);
         }
     });
