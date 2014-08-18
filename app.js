@@ -20,8 +20,8 @@ app.set('view engine', 'ejs');
 app.use(express.static(path.join(__dirname, "public")));
 app.use(cookieParser());
 app.use(bodyParser.urlencoded({extended: true}));
-//app.use(bodyParser.json({type: 'application/json'}));
-app.use(bodyParser.text({type: '*/*'}));
+//app.use(bodyParser.json({type: '*/json'}));
+app.use(bodyParser.text({type: 'text/*'}));
 
 /// route mappings
 app.use(require("./routes/mappings"));
