@@ -20,7 +20,7 @@ require('./admin/login').init(router);
 require('./admin/home').init(router);
 
 /*mobile*/
-require('./mobile/tags').init(router);
+require('./mobile/tag').init(router);
 
 
 /*complete*/
