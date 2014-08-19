@@ -11,6 +11,6 @@
         "token": "918156",
         "api.access_token": "https://api.weixin.qq.com/cgi-bin/token",
         "api.menu": "https://api.weixin.qq.com/cgi-bin/menu",
-        "api.send": "https://api.weixin.qq.com/cgi-bin/message/custom/send?access_token=ACCESS_TOKEN"
+        "api.send": "https://api.weixin.qq.com/cgi-bin/message/custom/send"
     }
 }

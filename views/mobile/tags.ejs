@@ -66,9 +66,21 @@
 <body>
 <div class="panel panel-default">
     <div class="panel-heading">
-
+        <div class="row">
+            <div class="col-lg-6">
+                <form action="/m/train" method="get" enctype="application/x-www-form-urlencoded">
+                    <div class="input-group">
+                        <input name="name" type="text" class="form-control" placeholder="课程检索"/>
+                        <span class="input-group-btn">
+                            <button class="btn btn-default" type="submit">确定</button>
+                        </span>
+                    </div>
+                </form>
+            </div>
+        </div>
     </div>
-    <div class="panel-body">
+
+    <div class="panel-body text-info">
         <div id="tags.container">
             <canvas id="tags" height="400">
                 <ul>
