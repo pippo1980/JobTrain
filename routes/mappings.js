@@ -18,10 +18,11 @@ require('./webchat/callback').init(router);
 /*admin*/
 require('./admin/login').init(router);
 require('./admin/home').init(router);
+require('./admin/train').init(router);
 
 /*mobile*/
 require('./mobile/tag').init(router);
-
+require('./mobile/train').init(router);
 
 /*complete*/
 module.exports = router;

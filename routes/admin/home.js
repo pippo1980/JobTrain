@@ -11,15 +11,14 @@ module.exports.init = function (router) {
 
 function validate(req, res, next) {
     var session_id = req.cookies['session_id'];
-    if (session_id != null) {
-        next(req, res);
+    if (session_id !== null) {
+        next();
     } else {
         res.redirect(302, "/admin/login")
     }
-
 }
 
 
 function home(req, res) {
-    res.render('admin/home', { title: '包就业' });
+    res.render('admin/home');
 }

@@ -28,15 +28,6 @@ function Template() {
             db = null;
         }
 
-
-        //        if (db != null) {
-        //            /*init db*/
-        //            db.run("create table if not exists user_t (id text PRIMARY KEY, name NOT NULL, email text UNIQUE NOT NULL , password text NOT NULL);");
-        //            /*word_type=0(word);word_type=1(phrase)*/
-        //            db.run("create table if not exists word_t (id text PRIMARY KEY, content NOT NULL, word_type integer DEFAULT 0);");
-        //            db.run("create table if not exists note_t (id text PRIMARY KEY, content NOT NULL, word_id text NOT NULL, user_id text NOT NULL);");
-        //        }
-
         return db;
     }
 
@@ -68,6 +59,10 @@ function Template() {
     }
 
     return {
+        'run': function (sql) {
+            db.run(sql);
+        },
+
         'update': function (sql, params, callback) {
             operate(function (db) {
                 console.log("update:", sql, params);

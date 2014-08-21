@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title><%= title %></title>
+
+    <link rel="stylesheet" href="/static/bootstrap-3.2.0-dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="/static/bootstrap-3.2.0-dist/css/bootstrap-theme.min.css"/>
+    <script type="text/javascript" src="/static/custom/js/jquery-2.1.1.min.js"></script>
+    <script type="text/javascript" src="/static/bootstrap-3.2.0-dist/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="/static/ckeditor/ckeditor.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            $("#train_form_submit").click(function () {
+                var form = $("#train_form").serializeArray();
+                console.log("train_form:", form)
+                var params = {};
+                for (var i = 0; i < form.length; i++) {
+                    var field = form[i];
+                    params[field.name] = field.value;
+                }
+
+                //  params['student_desc']=CKEDITOR.instances.student_desc.getData();
+                //  params['train_desc']=CKEDITOR.instances.train_desc.getData();
+                var url = "/admin/train/" + (params['id'] !== "" ? 'update' : 'add');
+                console.log(url);
+                $.post(url, params, function (data, status, xhr) {
+                    $("#train_form")[0].reset();
+                    loadGrid({});
+                });
+            });
+        })
+    </script>
+</head>
+<body>
+<div class="modal-dialog modal-lg">
+    <div class="modal-content">
+        <form id="train_form">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">
+                    <span aria-hidden="true">&times;</span>
+                    <span class="sr-only">关闭</span>
+                </button>
+                <h4 class="modal-title">新增培训</h4>
+            </div>
+            <div class="modal-body">
+                <div class="input-group">
+                    <span class="input-group-addon">培训类别</span>
+                    <input name="name" type="name" class="form-control" placeholder="培训类别" required autofocus
+                           value="<%= (!!train.name) ? train.name : '' %>"/>
+                </div>
+                <div class="input-group">
+                    <span class="input-group-addon">适合学员</span>
+                    <textarea id="student_desc"
+                              name="student_desc"
+                              rows="10"
+                              cols="80"
+                              required>&nbsp;&nbsp;<%= (!!train.student_desc) ? train.student_desc : '' %></textarea>
+                    <!--<script type="text/javascript">CKEDITOR.replace('student_desc');</script>-->
+                </div>
+                <div class="input-group">
+                    <span class="input-group-addon">课程说明</span>
+                    <textarea id="train_desc"
+                              name="train_desc"
+                              rows="10" cols="80"
+                              required>&nbsp;&nbsp;<%= (!!train.train_desc) ? train.train_desc : '' %></textarea>
+                    <!--<script type="text/javascript">CKEDITOR.replace('train_desc');</script>-->
+                </div>
+            </div>
+            <div class="modal-footer">
+                <input type="hidden" name="id" value="<%= (!!train.id) ? train.id : '' %>">
+                <button id="train_from_cancel" type="button" class="btn btn-default" data-dismiss="modal">
+                    取消
+                </button>
+                <button id="train_form_submit" type="button" class="btn btn-primary" data-dismiss="modal">
+                    提交
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+
+</body>
+</html>
