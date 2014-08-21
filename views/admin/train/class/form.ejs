@@ -28,7 +28,7 @@
                 console.log(url);
                 $.post(url, params, function (data, status, xhr) {
                     $("#train_form")[0].reset();
-                    loadTrainGrid({});
+                    loadGrid({});
                 });
             });
         })

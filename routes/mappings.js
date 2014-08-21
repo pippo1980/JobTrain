@@ -19,6 +19,7 @@ require('./webchat/callback').init(router);
 require('./admin/login').init(router);
 require('./admin/home').init(router);
 require('./admin/train').init(router);
+require('./admin/train.class').init(router);
 
 /*mobile*/
 require('./mobile/tag').init(router);

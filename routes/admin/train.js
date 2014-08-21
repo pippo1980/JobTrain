@@ -41,9 +41,27 @@ function search(req, res) {
     params.push(limit);
     params.push(start);
 
+    /*先取主数据*/
     db.find(search_sql, params, function (success, rows) {
-        var result = {start: start, limit: limit, items: success ? rows : []};
-        res.render("admin/train/list", result);
+        var items = [];
+        var min_price_sql = "select min(price) as mini_price from train_class_t where train_id =?";
+
+        /*循环主数据,填充其他属性*/
+        for (var i = 0; i < rows.length; i++) {
+            var length = rows.length;
+            var train = rows[i];
+
+            db.get(min_price_sql, [train.id], function (success, row) {
+                train['mini_price'] = row.mini_price || 0;
+                items.push(train);
+
+                /*因为node是纯异步的,只要在最内部的循环结束时做返回客户端的逻辑*/
+                if (length == i) {
+                    var result = {start: start, limit: limit, items: success ? items : []};
+                    res.render("admin/train/list", result);
+                }
+            })
+        }
     });
 }
 

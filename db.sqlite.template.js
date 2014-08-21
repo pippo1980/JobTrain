@@ -79,6 +79,7 @@ function Template() {
 
         'get': function (sql, params, callback) {
             operate(function (db) {
+                console.log("get:", sql, params);
                 db.get(sql, params, function (error, row) {
                     if (error != null) {
                         console.error("get due to error:", error);

@@ -15,10 +15,10 @@
         var start = 0, limit = 20
 
         $(function () {
-            loadGrid({});
+            loadTrainGrid({});
 
             $("#train_add").click(function () {
-                loadForm("");
+                loadTrainForm("");
             });
 
             $("#train_add_submit").click(function () {
@@ -33,13 +33,13 @@
                 //  params['train_desc']=CKEDITOR.instances.train_desc.getData();
 
                 $.post("/admin/train/add", params, function (data, status, xhr) {
-                    $("#train_add_form")[0].reset();
-                    loadGrid({});
+                    $("#train_form")[0].reset();
+                    loadTrainGrid({});
                 });
             });
         })
 
-        function loadGrid(params) {
+        function loadTrainGrid(params) {
             params['start'] = start;
             params['limit'] = limit;
             $.get("/admin/train/search", params, function (data, status, xhr) {
@@ -47,15 +47,23 @@
             })
         }
 
-        function loadForm(id) {
+        function loadTrainForm(id) {
             $('#train_model').load("/admin/train/form", {id: id}).modal()
+        }
+
+        function loadTrainClassGrid(params) {
+            params['start'] = start;
+            params['limit'] = limit;
+            $.get("/admin/train/class/search", params, function (data, status, xhr) {
+                $("#train_grid").html(data);
+            })
         }
     </script>
 </head>
 <body>
 <div class="panel panel-default">
     <div class="panel-heading breadcrumb">
-        <li><h3 class="panel-title">词库管理</h3></li>
+        <li><h3 class="panel-title">培训管理</h3></li>
         <div class="btn-toolbar pull-right">
             <div class="btn-group">
                 <a id="train_add" class="btn btn-primary btn-xs">新增</a>

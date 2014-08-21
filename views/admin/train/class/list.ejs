@@ -12,7 +12,7 @@
     <script type="text/javascript">
         $('a[name="train_class"]').click(function () {
             var id = this.rel;
-            loadTrainClassGrid(id);
+            loadTrainClassGrid({id: id});
         });
 
         $('a[name="train_update"]').click(function () {
