@@ -1,10 +1,3 @@
-/*
- *
- *  * Copyright © 2014 www.myctu.cn.
- *  * All rights reserved.
- *
- */
-
 /**
  * Created by pippo on 14-8-19.
  */
