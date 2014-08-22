@@ -46,7 +46,7 @@
 
             $("a[name=tag]").click(function (event) {
                 console.log(event)
-                self.location = '/m/train?name=' + event.target.outerText
+                self.location = '/m/trains?name=' + event.target.outerText
             })
         })
     </script>
@@ -64,36 +64,38 @@
     </style>
 </head>
 <body>
-<div class="panel panel-default">
-    <div class="panel-heading">
-        <div class="row">
-            <div class="col-lg-6">
-                <form action="/m/train" method="get" enctype="application/x-www-form-urlencoded">
-                    <div class="input-group">
-                        <input name="name" type="text" class="form-control" placeholder="课程检索"/>
+<div class="container">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <div class="row">
+                <div class="col-lg-6">
+                    <form action="/m/train" method="get" enctype="application/x-www-form-urlencoded">
+                        <div class="input-group">
+                            <input name="name" type="text" class="form-control" placeholder="课程检索"/>
                         <span class="input-group-btn">
                             <button class="btn btn-default" type="submit">确定</button>
                         </span>
-                    </div>
-                </form>
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
-    </div>
 
-    <div class="panel-body text-info">
-        <div id="tags.container">
-            <canvas id="tags" height="400">
-                <ul>
-                    <li><a name="tag" data-weight="14" href="#">PHP</a></li>
-                    <li><a name="tag" data-weight="16" href="#">Android</a></li>
-                    <li><a name="tag" data-weight="14" href="#">.NET</a></li>
-                    <li><a name="tag" data-weight="20" href="#">IOS</a></li>
-                    <li><a name="tag" data-weight="14" href="#">JAVA</a></li>
-                    <li><a name="tag" data-weight="20" href="#">产品设计</a></li>
-                    <li><a name="tag" data-weight="12" href="#">NODEJS</a></li>
-                    <li><a name="tag" data-weight="14" href="#">软件测试</a></li>
-                </ul>
-            </canvas>
+        <div class="panel-body text-info">
+            <div id="tags.container">
+                <canvas id="tags" height="400">
+                    <ul>
+                        <li><a name="tag" data-weight="14" href="#">PHP</a></li>
+                        <li><a name="tag" data-weight="16" href="#">Android</a></li>
+                        <li><a name="tag" data-weight="14" href="#">.NET</a></li>
+                        <li><a name="tag" data-weight="20" href="#">IOS</a></li>
+                        <li><a name="tag" data-weight="14" href="#">JAVA</a></li>
+                        <li><a name="tag" data-weight="20" href="#">产品设计</a></li>
+                        <li><a name="tag" data-weight="12" href="#">NODEJS</a></li>
+                        <li><a name="tag" data-weight="14" href="#">软件测试</a></li>
+                    </ul>
+                </canvas>
+            </div>
         </div>
     </div>
 </div>

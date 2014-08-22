@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title><%= title %></title>
+    <link rel="stylesheet" href="/static/bootstrap-3.2.0-dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="/static/bootstrap-3.2.0-dist/css/bootstrap-theme.min.css"/>
+    <script type="text/javascript" src="/static/custom/js/jquery-2.1.1.min.js"></script>
+    <script type="text/javascript" src="/static/bootstrap-3.2.0-dist/js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            $("div[name='train']").click(function () {
+                var id = $(this).attr('rel');
+                self.location = "/m/train/class?id=" + id;
+            })
+        })
+    </script>
+</head>
+<body>
+<% for (var i = 0; i < items.length;i++) { %>
+<div name="train" class="panel panel-default" style="cursor: pointer" rel="<%= items[i].id %>">
+    <!-- Default panel contents -->
+    <div class="panel-heading"><%= items[i].name %></div>
+    <!-- List group -->
+    <ul class="list-group">
+        <li class="list-group-item">
+            <div>适合学员</div>
+            <p>&nbsp;</p>
+
+            <div><%= items[i].student_desc %></div>
+        </li>
+        <li class="list-group-item">
+            <div>课程简介</div>
+            <p>&nbsp;</p>
+
+            <div><%= items[i].train_desc %></div>
+        </li>
+    </ul>
+    <div class="panel-body">
+        <span class="label label-info">RBM <%= items[i].vip_price %>起</span>
+        <span class="label label-info">人数 <%= items[i].current_student %>/<%= items[i].total_student %></span>
+    </div>
+</div>
+<% } %>
+</body>
+</html>

@@ -13,7 +13,26 @@ module.exports.init = function (router) {
 }
 
 function search(req, res) {
-    res.render("admin/train/class/list");
+    var search_sql = "select * from train_class_t where (1=1) "
+    var params = [];
+
+    //    var name = req.param("name");
+    //    if (name != null) {
+    //        search_sql += "and name=? ";
+    //        params.push("%" + name + "%");
+    //    }
+
+    var start = req.param("start") || 0;
+    var limit = req.param("limit") || 10;
+
+    search_sql += "limit ? offset ? ";
+    params.push(limit);
+    params.push(start);
+
+    db.find(search_sql, params, function (success, rows) {
+        var result = {start: start, limit: limit, items: success ? items : []};
+        res.render("admin/train/class/list", result);
+    })
 }
 
 var load_sql = "select * from train_t where id=?";

@@ -36,6 +36,13 @@ function search(req, res) {
 
     /*先取主数据*/
     db.find(search_sql, params, function (success, rows) {
+        /*没有记录的情况*/
+        if (!success || rows.length == 0) {
+            res.render("admin/train/list", {start: 0, limit: 10, items: []});
+            res.end();
+            return;
+        }
+
         var items = [];
         var min_price_sql = "select min(price) as mini_price from train_class_t where train_id =?";
 
@@ -52,6 +59,8 @@ function search(req, res) {
                 if (length == i) {
                     var result = {start: start, limit: limit, items: success ? items : []};
                     res.render("admin/train/list", result);
+                    res.end();
+                    return;
                 }
             })
         }
