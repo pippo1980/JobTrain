@@ -14,14 +14,19 @@
             var inited = false;
             var next = inited ? <%=start%> +2 : 0;
 
+            var segment_url = "/m/trains.segment?name=<%=name%>&start=" + next;
             $("#load_more").click(function () {
-                url = "/m/trains.segment?name=<%=name%>&start=" + next;
-                $.get(url, function (data, status, xhr) {
+                $.get(segment_url, function (data, status, xhr) {
                     inited = true;
                     next += 2;
                     $("#trains").append(data);
                 })
             }).trigger('click');
+
+            var count_url = "/m/trains.count?name=<%=name%>";
+            $.get(count_url, function (data, status, xhr) {
+
+            })
         })
     </script>
 </head>

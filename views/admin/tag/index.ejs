@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title><%= title %></title>
+
+    <link rel="stylesheet" href="/static/bootstrap-3.2.0-dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="/static/bootstrap-3.2.0-dist/css/bootstrap-theme.min.css"/>
+    <script type="text/javascript" src="/static/custom/js/jquery-2.1.1.min.js"></script>
+    <script type="text/javascript" src="/static/bootstrap-3.2.0-dist/js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+        var start = 0, limit = 20
+
+        $(function () {
+            $("#add_from").click(function () {
+                loadForm("");
+            });
+
+            loadPageGrid({start: start, limit: limit});
+        })
+
+        function loadPageGrid(params) {
+            params['start'] = start;
+            params['limit'] = limit;
+            $.get("/admin/tag/page", params, function (data, status, xhr) {
+                $("#grid").html(data);
+            })
+        }
+
+        function loadForm(id) {
+            $('#model').load("/admin/tag/form", {id: id}).modal()
+        }
+
+    </script>
+</head>
+<body>
+<div class="panel panel-default">
+    <div class="panel-heading breadcrumb">
+        <li><h3 class="panel-title">TAG管理</h3></li>
+        <div class="btn-toolbar pull-right">
+            <div class="btn-group">
+                <a id="add_from" class="btn btn-primary btn-xs">新增</a>
+            </div>
+        </div>
+    </div>
+    <div id="grid" class="panel-body">
+
+    </div>
+    <div class="panel-footer">Panel footer</div>
+</div>
+
+<div id="model" class="modal fade"></div>
+
+</body>
+</html>

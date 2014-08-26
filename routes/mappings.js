@@ -18,8 +18,7 @@ require('./webchat/callback').init(router);
 /*admin*/
 require('./admin/login').init(router);
 require('./admin/home').init(router);
-require('./admin/train').init(router);
-require('./admin/train.class').init(router);
+require('./admin/tag').init(router);
 
 /*mobile*/
 require('./mobile/tag').init(router);

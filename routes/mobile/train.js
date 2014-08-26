@@ -7,7 +7,7 @@ var db = require("../../db.sqlite.template");
 module.exports.init = function (router) {
     router.get("/m/trains", trains);
     router.get("/m/trains.segment", segment);
-
+    router.get("/m/trains.count", count);
 }
 
 function trains(req, res) {
@@ -58,4 +58,19 @@ function segment(req, res) {
             })
         }
     });
+}
+
+var count_sql = "select train_t.id as id, train_class_t.id as train_class_id, count(train_t.id) as train_count " +
+                "from train_t, train_class_t " +
+                "where train_t.name like ? " +
+                "and train_t.id=train_class_t.train_id " +
+                "group by train_t.id";
+
+function count(req, res) {
+    console.log(count_sql)
+    var name = req.param("name");
+
+    db.get(count_sql, [name], function (success, row) {
+        console.log(row);
+    })
 }
