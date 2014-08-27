@@ -46,7 +46,7 @@
 
             $("a[name=tag]").click(function (event) {
                 console.log(event)
-                self.location = '/m/trains?id=' + event.target.rel
+                self.location = '/m/trains?tag=' + event.target.innerText
             })
         })
     </script>

@@ -37,13 +37,13 @@ Database.prototype.init = function () {
 }
 
 Database.prototype.reset = function () {
-    if (this.db != null) {
-        console.log("try to close db:", this.db);
-        this.db.close(function (error) {
+    if (db != null) {
+        console.log("try to close db:", db);
+        db.close(function (error) {
             if (error != null) {
                 console.error("close sqlite db due to error", error);
             }
-            this.db = null;
+            db = null;
         })
     }
 

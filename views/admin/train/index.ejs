@@ -11,11 +11,31 @@
     <script type="text/javascript" src="/static/custom/js/jquery-2.1.1.min.js"></script>
     <script type="text/javascript" src="/static/bootstrap-3.2.0-dist/js/bootstrap.min.js"></script>
     <script type="text/javascript">
-        var start = 0, limit = 20
+        var start = 0, limit = 10;
 
         $(function () {
             $("#add_from").click(function () {
                 loadForm("");
+            });
+
+            $("#page_previous").click(function () {
+                var _start = start - limit;
+                if (_start <= 0) {
+                    _start = 0;
+                }
+
+                start = _start;
+                loadPageGrid({});
+            });
+
+            $("#page_next").click(function () {
+                var _start = start + limit;
+                if (_start <= 0) {
+                    _start = 0;
+                }
+                start = _start;
+
+                loadPageGrid({});
             });
 
             loadPageGrid({start: start, limit: limit});
@@ -48,7 +68,12 @@
     <div id="grid" class="panel-body">
 
     </div>
-    <div class="panel-footer">Panel footer</div>
+    <div class="panel-footer">
+        <ul class="pager">
+            <li><a id="page_previous" href="#">Previous</a></li>
+            <li><a id="page_next" href="#">Next</a></li>
+        </ul>
+    </div>
 </div>
 
 <div id="model" class="modal fade"></div>

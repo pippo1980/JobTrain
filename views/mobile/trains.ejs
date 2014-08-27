@@ -7,38 +7,39 @@
     <title><%= title %></title>
     <link rel="stylesheet" href="/static/bootstrap-3.2.0-dist/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="/static/bootstrap-3.2.0-dist/css/bootstrap-theme.min.css"/>
+    <link rel="stylesheet" href="/static/custom/css/synopsis.css"/>
     <script type="text/javascript" src="/static/custom/js/jquery-2.1.1.min.js"></script>
     <script type="text/javascript" src="/static/bootstrap-3.2.0-dist/js/bootstrap.min.js"></script>
     <script type="text/javascript">
         $(function () {
-            var inited = false;
-            var next = inited ? <%=start%> +2 : 0;
-
-            var segment_url = "/m/trains.segment?name=<%=name%>&start=" + next;
-            $("#load_more").click(function () {
-                $.get(segment_url, function (data, status, xhr) {
-                    inited = true;
-                    next += 2;
-                    $("#trains").append(data);
+            $("div [name='synopsis']").each(function (index, element) {
+                var type = $(element).attr('rel_type');
+                var price = $(element).attr('rel_price');
+                $.get('/m/train/synopsis', {type: type, price: price}, function (data, status, xhr) {
+                    $(element).html(data);
                 })
-            }).trigger('click');
-
-            var count_url = "/m/trains.count?name=<%=name%>";
-            $.get(count_url, function (data, status, xhr) {
-
             })
         })
     </script>
 </head>
 <body>
 <div id="trains" class="container">
+    <% for (var i = 0; i < trains.length; i++) { %>
 
+    <div class="panel panel-default">
+        <div class="panel-heading"><%= trains[i].train_type %></div>
+        <div name="synopsis" class="panel-body"
+             rel_type="<%= trains[i].train_type %>"
+             rel_price="<%= trains[i].price %>">
+
+        </div>
+    </div>
+
+    <% } %>
 </div>
 
 <div class="container">
-    <ul class="pager">
-        <li class="next"><a id="load_more" href="#">加载更多 &rarr;</a></li>
-    </ul>
+
 </div>
 </body>
 </html>

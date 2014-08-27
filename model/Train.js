@@ -187,3 +187,29 @@ Train.prototype.page = function (start, limit, callback) {
     })
 }
 
+Train.prototype.typeList = function (callback) {
+    var sql = "select train_type, min(price) as price from train_t where train_type like ? group by train_type";
+    var train = this;
+    db.find(sql, ['%' + train.train_type + '%'], function (success, rows) {
+        //console.log(rows)
+        callback(success && rows != null ? rows : []);
+    })
+}
+
+Train.prototype.getByType = function (callback) {
+    var sql = "select * from train_t where train_type=? and price=?";
+    var train = this;
+    db.get(sql, [train.train_type, train.price], function (success, row) {
+
+        if (success && row != null) {
+            for (var name in row) {
+                train[name] = row[name];
+            }
+        } else {
+            train = null;
+        }
+
+        callback(success, train);
+
+    });
+}
