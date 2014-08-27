@@ -12,7 +12,7 @@ function trains(req, res) {
     var train = new Train();
     train.train_type = req.param("tag");
     train.typeList(function (items) {
-        res.render("mobile/trains", {trains: items});
+        res.render("mobile/trains", {trains: items, train_type: train.train_type});
     });
 }
 
