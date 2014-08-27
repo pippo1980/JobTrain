@@ -1,4 +1,11 @@
-<div class="class_listjs">
+<script type="text/javascript">
+    $(function () {
+        $("#<%=train.id%>").click(function () {
+            self.location='/m/train/detail?id=<%=train.id%>';
+        })
+    })
+</script>
+<div id="<%=train.id%>" class="class_listjs">
     <dl class="cd fix">
         <dt class="f_l">
             <b class="name fc_323"><%=train.name%></b>
