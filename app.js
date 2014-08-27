@@ -55,9 +55,6 @@ server.on("error", function (event, listener) {
     logger.error(event);
 });
 
-///init db
-require("./db.dml");
-
 //////////////////////////////////////////////
 //var menu = require("./routes/webchat/api.menu");
 //menu.create(require("./routes/webchat/buttons"), function (success, result, error) {

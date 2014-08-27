@@ -1,8 +1,8 @@
 /**
  * Created by pippo on 14-8-26.
  */
-var db = require("../db.sqlite.template");
-
+var Database = require("../db.sqlite3.database.js");
+var db = new Database();
 db.run("create table if not exists user_t (id TEXT PRIMARY KEY, name TEXT NOT NULL, email TEXT UNIQUE NOT NULL , password TEXT NOT NULL);");
 
 function User() {
@@ -22,7 +22,7 @@ function User(email, password) {
 
 module.exports = User;
 
-User.prototype.login = function (callback) {
+User.login = function (callback) {
     var sql = 'select * from user_t where email=? and password=?';
     var user = this;
     db.get(sql, [user.email, user.password], function (success, row) {

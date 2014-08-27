@@ -10,22 +10,19 @@
     <script type="text/javascript" src="/static/custom/js/jquery-2.1.1.min.js"></script>
     <script type="text/javascript" src="/static/bootstrap-3.2.0-dist/js/bootstrap.min.js"></script>
     <script type="text/javascript">
-        $('a[name="train_class"]').click(function () {
-            var id = this.rel;
-            loadTrainClassGrid({id: id});
-        });
+        $(function () {
+            $('a[name="update_from"]').click(function () {
+                var id = this.rel;
+                loadForm(id);
+            });
 
-        $('a[name="train_update"]').click(function () {
-            var id = this.rel;
-            loadTrainForm(id);
-        });
-
-        $('a[name="train_delete"]').click(function () {
-            var id = this.rel;
-            $.post("/admin/train/remove", {id: id}, function () {
-                loadTrainGrid({});
-            })
-        });
+            $('a[name="delete_form"]').click(function () {
+                var id = this.rel;
+                $.post("/admin/train/remove", {id: id}, function () {
+                    loadPageGrid({});
+                })
+            });
+        })
     </script>
 </head>
 <body>
@@ -35,9 +32,11 @@
         <thead>
         <tr>
             <th style="width: 5%">#</th>
-            <th style="width: 20%">名称</th>
-            <th style="width: 45%">适合学员</th>
-            <th style="width: 10%">最低价格</th>
+            <th style="width: 15%">类型</th>
+            <th style="width: 15%">编号</th>
+            <th style="width: 15%">名称</th>
+            <th style="width: 15%">价格</th>
+            <th style="width: 15%">报名</th>
             <th style="width: 20%">操作</th>
         </tr>
         </thead>
@@ -48,13 +47,14 @@
                 <%= (i + 1) %>
                 <div style="display: none"><%= items[i].id %></div>
             </td>
+            <td><%= items[i].train_type %></td>
+            <td><%= items[i].serial_num %></td>
             <td><%= items[i].name %></td>
-            <td><%= items[i].student_desc %></td>
-            <td><%= items[i].mini_price %>元</td>
+            <td><%= items[i].price %>/<%= items[i].vip_price %></td>
+            <td><%= items[i].apply_count %>/<%= items[i].total_count %></td>
             <td>
-                <a name="train_class" rel="<%= items[i].id %>" class="btn btn-primary btn-xs">培训班</a>
-                <a name="train_update" rel="<%= items[i].id %>" class="btn btn-primary btn-xs">修改</a>
-                <a name="train_delete" rel="<%= items[i].id %>" class="btn btn-danger btn-xs">删除</a>
+                <a name="update_from" rel="<%= items[i].id %>" class="btn btn-primary btn-xs">修改</a>
+                <a name="delete_form" rel="<%= items[i].id %>" class="btn btn-danger btn-xs">删除</a>
             </td>
         </tr>
         <% } %>

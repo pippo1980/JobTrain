@@ -1,17 +1,15 @@
 /**
  * Created by pippo on 14-8-18.
  */
-var db = require("../../db.sqlite.template");
+var Tag = require("../../model/Tag");
 
 module.exports.init = function (router) {
     router.get("/m/tags", list);
-    router.put("/m/tag", add);
 }
 
 function list(req, res) {
-    res.render('mobile/tags', { title: '包就业' });
-}
-
-function add(req, res) {
-
+    var tag = new Tag();
+    tag.list(function (tags) {
+        res.render('mobile/tags', { tags: tags });
+    })
 }

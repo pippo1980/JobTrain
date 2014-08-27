@@ -10,25 +10,23 @@
     <link rel="stylesheet" href="/static/bootstrap-3.2.0-dist/css/bootstrap-theme.min.css"/>
     <script type="text/javascript" src="/static/custom/js/jquery-2.1.1.min.js"></script>
     <script type="text/javascript" src="/static/bootstrap-3.2.0-dist/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="/static/ckeditor/ckeditor.js"></script>
     <script type="text/javascript">
         $(function () {
-            $("#train_form_submit").click(function () {
-                var form = $("#train_form").serializeArray();
-                console.log("train_form:", form)
+            $("#form_submit").click(function () {
+                var form = $("#model_form").serializeArray();
+                console.log("model_form:", form)
                 var params = {};
                 for (var i = 0; i < form.length; i++) {
                     var field = form[i];
                     params[field.name] = field.value;
                 }
 
-                //  params['student_desc']=CKEDITOR.instances.student_desc.getData();
-                //  params['train_desc']=CKEDITOR.instances.train_desc.getData();
                 var url = "/admin/train/" + (params['id'] !== "" ? 'update' : 'add');
                 console.log(url);
+
                 $.post(url, params, function (data, status, xhr) {
-                    $("#train_form")[0].reset();
-                    loadTrainGrid({});
+                    $("#model_form")[0].reset();
+                    loadPageGrid({});
                 });
             });
         })
@@ -37,44 +35,200 @@
 <body>
 <div class="modal-dialog modal-lg">
     <div class="modal-content">
-        <form id="train_form">
+        <form id="model_form" class="form-horizontal">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal">
                     <span aria-hidden="true">&times;</span>
                     <span class="sr-only">关闭</span>
                 </button>
-                <h4 class="modal-title">新增培训</h4>
+                <h4 class="modal-title">新增培训班</h4>
             </div>
             <div class="modal-body">
-                <div class="input-group">
-                    <span class="input-group-addon">培训类别</span>
-                    <input name="name" type="name" class="form-control" placeholder="培训类别" required autofocus
-                           value="<%= (!!train.name) ? train.name : '' %>"/>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">类型</label>
+
+                    <div class="col-sm-10">
+                        <input name="train_type"
+                               type="text"
+                               class="form-control"
+                               placeholder="类型"
+                               required autofocus
+                               value="<%= (!!train.train_type) ? train.train_type : '' %>"/>
+                    </div>
                 </div>
-                <div class="input-group">
-                    <span class="input-group-addon">适合学员</span>
-                    <textarea id="student_desc"
-                              name="student_desc"
-                              rows="10"
-                              cols="80"
-                              required>&nbsp;&nbsp;<%= (!!train.student_desc) ? train.student_desc : '' %></textarea>
-                    <!--<script type="text/javascript">CKEDITOR.replace('student_desc');</script>-->
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">编号</label>
+
+                    <div class="col-sm-10">
+                        <input name="serial_num"
+                               type="text"
+                               class="form-control"
+                               placeholder="编号"
+                               required autofocus
+                               value="<%= (!!train.serial_num) ? train.serial_num : '' %>"/>
+                    </div>
                 </div>
-                <div class="input-group">
-                    <span class="input-group-addon">课程说明</span>
-                    <textarea id="train_desc"
-                              name="train_desc"
-                              rows="10" cols="80"
-                              required>&nbsp;&nbsp;<%= (!!train.train_desc) ? train.train_desc : '' %></textarea>
-                    <!--<script type="text/javascript">CKEDITOR.replace('train_desc');</script>-->
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">名称</label>
+
+                    <div class="col-sm-10">
+                        <input name="name"
+                               type="text"
+                               class="form-control"
+                               placeholder="名称"
+                               required autofocus
+                               value="<%= (!!train.name) ? train.name : '' %>"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">价格</label>
+
+                    <div class="col-sm-10">
+                        <input name="price"
+                               type="number"
+                               class="form-control"
+                               placeholder="价格"
+                               required autofocus
+                               value="<%= (!!train.price) ? train.price : '' %>"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">包就业价格</label>
+
+                    <div class="col-sm-10">
+                        <input name="vip_price"
+                               type="number"
+                               class="form-control"
+                               placeholder="包就业价格"
+                               required autofocus
+                               value="<%= (!!train.vip_price) ? train.vip_price : '' %>"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">报名人数</label>
+
+                    <div class="col-sm-10">
+                        <input name="apply_count"
+                               type="number"
+                               class="form-control"
+                               placeholder="报名人数"
+                               required autofocus
+                               value="<%= (!!train.apply_count) ? train.apply_count : '' %>"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">总人数</label>
+
+                    <div class="col-sm-10">
+                        <input name="total_count"
+                               type="number"
+                               class="form-control"
+                               placeholder="总人数"
+                               required autofocus
+                               value="<%= (!!train.total_count) ? train.total_count : '' %>"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">报道时间</label>
+
+                    <div class="col-sm-10">
+                        <textarea name="signin_time"
+                                  rows="5"
+                                  cols="80"
+                                  required>&nbsp;&nbsp;<%= (!!train.signin_time) ? train.signin_time : '' %></textarea>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">上课时间</label>
+
+                    <div class="col-sm-10">
+                        <textarea name="train_time"
+                                  rows="5"
+                                  cols="80"
+                                  required>&nbsp;&nbsp;<%= (!!train.train_time) ? train.train_time : '' %></textarea>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">上课地点</label>
+
+                    <div class="col-sm-10">
+                        <textarea name="classroom"
+                                  rows="5"
+                                  cols="80"
+                                  required>&nbsp;&nbsp;<%= (!!train.classroom) ? train.classroom : '' %></textarea>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">培训对象</label>
+
+                    <div class="col-sm-10">
+                        <textarea name="student_desc"
+                                  rows="5"
+                                  cols="80"
+                                  required>&nbsp;&nbsp;<%= (!!train.student_desc) ?
+                                                           train.student_desc :
+                                                           '' %></textarea>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">培训描述</label>
+
+                    <div class="col-sm-10">
+                        <textarea name="train_desc"
+                                  rows="5"
+                                  cols="80"
+                                  required>&nbsp;&nbsp;<%= (!!train.train_desc) ? train.train_desc : '' %></textarea>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">要求基础</label>
+
+                    <div class="col-sm-10">
+                        <textarea name="requirement"
+                                  rows="5"
+                                  cols="80"
+                                  required>&nbsp;&nbsp;<%= (!!train.requirement) ? train.requirement : '' %></textarea>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">对口企业</label>
+
+                    <div class="col-sm-10">
+                        <textarea name="purpose_org"
+                                  rows="5"
+                                  cols="80"
+                                  required>&nbsp;&nbsp;<%= (!!train.purpose_org) ? train.purpose_org : '' %></textarea>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">您将学到</label>
+
+                    <div class="col-sm-10">
+                        <textarea name="obtain_skill"
+                                  rows="5"
+                                  cols="80"
+                                  required>&nbsp;&nbsp;<%= (!!train.obtain_skill) ?
+                                                           train.obtain_skill :
+                                                           '' %></textarea>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">您将成为</label>
+
+                    <div class="col-sm-10">
+                        <textarea name="target_role"
+                                  rows="5"
+                                  cols="80"
+                                  required>&nbsp;&nbsp;<%= (!!train.target_role) ? train.target_role : '' %></textarea>
+                    </div>
                 </div>
             </div>
             <div class="modal-footer">
                 <input type="hidden" name="id" value="<%= (!!train.id) ? train.id : '' %>">
-                <button id="train_from_cancel" type="button" class="btn btn-default" data-dismiss="modal">
+                <button id="form_cancel" type="button" class="btn btn-default" data-dismiss="modal">
                     取消
                 </button>
-                <button id="train_form_submit" type="button" class="btn btn-primary" data-dismiss="modal">
+                <button id="form_submit" type="button" class="btn btn-primary" data-dismiss="modal">
                     提交
                 </button>
             </div>

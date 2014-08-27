@@ -2,7 +2,7 @@
  * Created by pippo on 14-8-19.
  */
 
-var db = require("../../db.sqlite.template");
+var db = require("../../db.sqlite3.database.js");
 
 module.exports.init = function (router) {
     router.get("/m/trains", trains);

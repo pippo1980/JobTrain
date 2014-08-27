@@ -3,9 +3,6 @@
  */
 var User = require("../../model/User");
 
-var login_sql = 'select id from user_t where email=? and password=?';
-
-
 module.exports.init = function (router) {
     router.get("/admin/register", register);
     router.post("/admin/register", do_register);

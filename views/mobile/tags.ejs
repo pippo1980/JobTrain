@@ -46,7 +46,7 @@
 
             $("a[name=tag]").click(function (event) {
                 console.log(event)
-                self.location = '/m/trains?name=' + event.target.outerText
+                self.location = '/m/trains?id=' + event.target.rel
             })
         })
     </script>
@@ -85,14 +85,17 @@
             <div id="tags.container">
                 <canvas id="tags" height="400">
                     <ul>
-                        <li><a name="tag" data-weight="14" href="#">PHP</a></li>
-                        <li><a name="tag" data-weight="16" href="#">Android</a></li>
-                        <li><a name="tag" data-weight="14" href="#">.NET</a></li>
-                        <li><a name="tag" data-weight="20" href="#">IOS</a></li>
-                        <li><a name="tag" data-weight="14" href="#">JAVA</a></li>
-                        <li><a name="tag" data-weight="20" href="#">产品设计</a></li>
-                        <li><a name="tag" data-weight="12" href="#">NODEJS</a></li>
-                        <li><a name="tag" data-weight="14" href="#">软件测试</a></li>
+                        <% for (var i = 0;i < tags.length;i++){ %>
+                        <li><a name="tag" data-weight="14" href="#" rel="<%= tags[i].id %>"><%= tags[i].name %></a></li>
+                        <% } %>
+                        <!--<li><a name="tag" data-weight="14" href="#">PHP</a></li>-->
+                        <!--<li><a name="tag" data-weight="16" href="#">Android</a></li>-->
+                        <!--<li><a name="tag" data-weight="14" href="#">.NET</a></li>-->
+                        <!--<li><a name="tag" data-weight="20" href="#">IOS</a></li>-->
+                        <!--<li><a name="tag" data-weight="14" href="#">JAVA</a></li>-->
+                        <!--<li><a name="tag" data-weight="20" href="#">产品设计</a></li>-->
+                        <!--<li><a name="tag" data-weight="12" href="#">NODEJS</a></li>-->
+                        <!--<li><a name="tag" data-weight="14" href="#">软件测试</a></li>-->
                     </ul>
                 </canvas>
             </div>

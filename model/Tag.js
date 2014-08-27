@@ -2,8 +2,8 @@
  * Created by pippo on 14-8-26.
  */
 var uuid = require('node-uuid');
-var db = require("../db.sqlite.template");
-
+var Database = require("../db.sqlite3.database.js");
+var db = new Database();
 db.run("create table if not exists tag_t (id TEXT PRIMARY KEY, name TEXT NOT NULL, description TEXT);");
 
 function Tag() {

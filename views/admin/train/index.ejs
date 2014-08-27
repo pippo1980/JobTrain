@@ -10,54 +10,29 @@
     <link rel="stylesheet" href="/static/bootstrap-3.2.0-dist/css/bootstrap-theme.min.css"/>
     <script type="text/javascript" src="/static/custom/js/jquery-2.1.1.min.js"></script>
     <script type="text/javascript" src="/static/bootstrap-3.2.0-dist/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="/static/ckeditor/ckeditor.js"></script>
     <script type="text/javascript">
         var start = 0, limit = 20
 
         $(function () {
-            loadTrainGrid({});
-
-            $("#train_add").click(function () {
-                loadTrainForm("");
+            $("#add_from").click(function () {
+                loadForm("");
             });
 
-            $("#train_add_submit").click(function () {
-                var form = $("#train_add_form").serializeArray();
-                console.log("train_add:", form)
-                var params = {};
-                for (var i = 0; i < form.length; i++) {
-                    var field = form[i];
-                    params[field.name] = field.value;
-                }
-                //  params['student_desc']=CKEDITOR.instances.student_desc.getData();
-                //  params['train_desc']=CKEDITOR.instances.train_desc.getData();
-
-                $.post("/admin/train/add", params, function (data, status, xhr) {
-                    $("#train_form")[0].reset();
-                    loadTrainGrid({});
-                });
-            });
+            loadPageGrid({start: start, limit: limit});
         })
 
-        function loadTrainGrid(params) {
+        function loadPageGrid(params) {
             params['start'] = start;
             params['limit'] = limit;
-            $.get("/admin/train/search", params, function (data, status, xhr) {
-                $("#train_grid").html(data);
+            $.get("/admin/train/page", params, function (data, status, xhr) {
+                $("#grid").html(data);
             })
         }
 
-        function loadTrainForm(id) {
-            $('#train_model').load("/admin/train/form", {id: id}).modal()
+        function loadForm(id) {
+            $('#model').load("/admin/train/form", {id: id}).modal()
         }
 
-        function loadTrainClassGrid(params) {
-            params['start'] = start;
-            params['limit'] = limit;
-            $.get("/admin/train/class/search", params, function (data, status, xhr) {
-                $("#train_grid").html(data);
-            })
-        }
     </script>
 </head>
 <body>
@@ -66,17 +41,17 @@
         <li><h3 class="panel-title">培训管理</h3></li>
         <div class="btn-toolbar pull-right">
             <div class="btn-group">
-                <a id="train_add" class="btn btn-primary btn-xs">新增</a>
+                <a id="add_from" class="btn btn-primary btn-xs">新增</a>
             </div>
         </div>
     </div>
-    <div id="train_grid" class="panel-body">
+    <div id="grid" class="panel-body">
 
     </div>
     <div class="panel-footer">Panel footer</div>
 </div>
 
-<div id="train_model" class="modal fade"></div>
+<div id="model" class="modal fade"></div>
 
 </body>
 </html>

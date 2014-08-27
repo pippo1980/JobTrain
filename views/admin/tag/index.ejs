@@ -23,7 +23,7 @@
 
         function loadPageGrid(params) {
             params['start'] = start;
-            params['limit'] = limit;
+            params['limit'] = limit
             $.get("/admin/tag/page", params, function (data, status, xhr) {
                 $("#grid").html(data);
             })
