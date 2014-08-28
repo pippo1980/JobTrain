@@ -13,7 +13,7 @@ router.use(function (req, res, next) {
 
 /*init the router mappings*/
 require('./index').init(router);
-require('./webchat/callback').init(router);
+require('./wechat/callback').init(router);
 
 /*admin*/
 require('./admin/login').init(router);

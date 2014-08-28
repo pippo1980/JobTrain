@@ -6,7 +6,7 @@ var request = require('request');
 var settings = require("../../settings");
 var logger = require("../../logger").get(__filename);
 
-var api_url = settings['webchat']['api.menu'];
+var api_url = settings['wechat']['api.menu'];
 
 function Menu() {
 

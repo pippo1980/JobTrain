@@ -25,7 +25,7 @@
                 }
             ]
         },
-        "webchat-message": {
+        "wechat-message": {
             "name": "job-train",
             "streams": [
                 {
@@ -43,7 +43,7 @@
         "host": "0.0.0.0",
         "port": 80
     },
-    "webchat": {
+    "wechat": {
         "app_id": "wx70694206b7dda51f",
         "app_secret": "e4cc90440330f4f66c75611444179800",
         "token": "918156",

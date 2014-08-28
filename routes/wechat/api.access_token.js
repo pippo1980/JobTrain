@@ -6,13 +6,13 @@ var https = require('https');
 var settings = require("../../settings");
 var logger = require("../../logger").get(__filename);
 
-var webchat_settings = settings['webchat'];
-var api_url = webchat_settings['api.access_token'] +
+var wechat_settings = settings['wechat'];
+var api_url = wechat_settings['api.access_token'] +
               "?grant_type=client_credential" +
               "&appid=" +
-              webchat_settings['app_id'] +
+              wechat_settings['app_id'] +
               "&secret=" +
-              webchat_settings['app_secret'];
+              wechat_settings['app_secret'];
 
 var access_token = null;
 var access_token_period = 7000 * 1000;
