@@ -29,11 +29,11 @@ module.exports.create = function (from, to) {
                     {
                         'Title': 'IOS工程师培训\n\n 意向企业:小米\n 预计薪资:5000~10000',
                         'PicUrl': 'http://baojiuye.inmovation.com/static/wechat/welcome/ios.png',
-                        'Url': 'http://baojiuye.inmovation.com/train/detail?id=0598c9ca-f055-42b3-9beb-5c23e6e9f88a'
+                        'Url': 'http://baojiuye.inmovation.com/m/train/detail?id=0598c9ca-f055-42b3-9beb-5c23e6e9f88a'
                     },{
                         'Title': 'JAVA工程师培训\n\n 意向企业:小米\n 预计薪资:5000~10000',
                         'PicUrl': 'http://baojiuye.inmovation.com/static/wechat/welcome/java.png',
-                        'Url': 'http://baojiuye.inmovation.com/train/detail?id=0598c9ca-f055-42b3-9beb-5c23e6e9f88a'
+                        'Url': 'http://baojiuye.inmovation.com/m/train/detail?id=0598c9ca-f055-42b3-9beb-5c23e6e9f88a'
                     }
                 ]
             }
