@@ -29,7 +29,7 @@
             "name": "job-train",
             "streams": [
                 {
-                    "path": "/var/log/webchat.log",
+                    "path": "/var/log/wechat.log",
                     "type": "rotating-file",
                     "period": "1h",
                     "count": 720,
