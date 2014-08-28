@@ -1,12 +1,29 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <meta charset="utf-8">
     <meta http-equiv="Content-type" content="text/html; charset=utf-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta name="format-detection" content="telephone=yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
     <title><%= title %></title>
     <link rel="stylesheet" href="/static/bootstrap-3.2.0-dist/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="/static/bootstrap-3.2.0-dist/css/bootstrap-theme.min.css"/>
+
+    <style>
+        html, body {
+            height: 100%;
+            width: 100%;
+            background:url(/static/custom/img/bg.png) repeat;
+        }
+        .head { border-radius:8px 8px 0 0; border-top:1px solid #5dd555; background: -webkit-gradient(linear, left top, left bottom, color-stop(0, #50c347), color-stop(1, #369d32)); padding-bottom:4px;}
+        h2 { font-size:20px; color:#fff; text-align:center; margin:5px auto; text-shadow:1px 1px 2px #006900;}
+        canvas {
+            display: block;
+        }
+    </style>
+
     <script type="text/javascript" src="/static/custom/js/jquery-2.1.1.min.js"></script>
     <!--<script type="text/javascript" src="/static/custom/js/jquery.tagcanvas-2.5.min.js"></script>-->
     <script type="text/javascript" src="/static/custom/js/tagcanvas-2.5.min.js"></script>
@@ -50,23 +67,12 @@
             })
         })
     </script>
-
-    <style>
-
-        html, body {
-            height: 100%;
-            width: 100%;
-        }
-
-        canvas {
-            display: block;
-        }
-    </style>
 </head>
 <body>
 <div class="container">
+    <div class="head"><h2>课程检索</h2></div>
     <div class="panel panel-default">
-        <div class="panel-heading">
+        <div class="panel-heading ">
             <div class="row">
                 <div class="col-lg-6">
                     <form action="/m/train" method="get" enctype="application/x-www-form-urlencoded">

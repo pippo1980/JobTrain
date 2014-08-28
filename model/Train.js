@@ -9,6 +9,7 @@ db.run("create table if not exists train_t (" +
        "train_type TEXT NOT NULL, " +
        "serial_num TEXT NOT NULL, " +
        "name TEXT NOT NULL, " +
+       "times INTEGER," +
        "price INTEGER, " +
        "vip_price INTEGER, " +
        "apply_count INTEGER, " +
@@ -29,6 +30,7 @@ function Train() {
     this.train_type = null;          //类型描述,会按照这个类型对培训班进行分组
     this.serial_num = null;          //培训班编号
     this.name = null                 //培训班名称
+    this.times = null                //课次
     this.price = null;               //价格
     this.vip_price = null;           //包就业价格
     this.apply_count = null;         //已经报名人数
@@ -68,6 +70,7 @@ Train.prototype.add = function (callback) {
               "$train_type," +
               "$serial_num," +
               "$name," +
+              "$times," +
               "$price," +
               "$vip_price," +
               "$apply_count," +
@@ -87,6 +90,7 @@ Train.prototype.add = function (callback) {
         $train_type: this.train_type,
         $serial_num: this.serial_num,
         $name: this.name,
+        $times: this.times,
         $price: this.price,
         $vip_price: this.vip_price,
         $apply_count: this.apply_count,
@@ -112,6 +116,7 @@ Train.prototype.update = function (callback) {
               "train_type= $train_type," +
               "serial_num=$serial_num," +
               "name=$name," +
+              "times=$times," +
               "price=$price," +
               "vip_price=$vip_price," +
               "apply_count=$apply_count," +
@@ -132,6 +137,7 @@ Train.prototype.update = function (callback) {
         $train_type: this.train_type,
         $serial_num: this.serial_num,
         $name: this.name,
+        $times: this.times,
         $price: this.price,
         $vip_price: this.vip_price,
         $apply_count: this.apply_count,
@@ -188,7 +194,7 @@ Train.prototype.page = function (start, limit, callback) {
 }
 
 Train.prototype.typeList = function (callback) {
-    var sql = "select train_type, min(price) as price from train_t where train_type like ? group by train_type";
+    var sql = "select train_type, min(vip_price) as price from train_t where train_type like ? group by train_type";
     var train = this;
     db.find(sql, ['%' + train.train_type + '%'], function (success, rows) {
         //console.log(rows)
@@ -197,7 +203,7 @@ Train.prototype.typeList = function (callback) {
 }
 
 Train.prototype.getByType = function (callback) {
-    var sql = "select * from train_t where train_type=? and price=?";
+    var sql = "select * from train_t where train_type=? and vip_price=?";
     var train = this;
     db.get(sql, [train.train_type, train.price], function (success, row) {
 

@@ -24,18 +24,17 @@ function synopsis(req, res) {
     train.price = req.param("price");
 
     train.getByType(function (success) {
-        //console.log(train)
+        console.log(train)
         res.render("mobile/train_synopsis", {train: train});
     });
 }
 
 function detail(req, res) {
     var train = new Train();
-    train.train_type = req.param("type");
-    train.price = req.param("price");
+    train.id = req.param("id");
 
-    train.getByType(function (success) {
+    train.load(function (success) {
         //console.log(train)
-        res.render("mobile/train_synopsis", {train: train});
+        res.render("mobile/train_detail", {train: train});
     });
 }

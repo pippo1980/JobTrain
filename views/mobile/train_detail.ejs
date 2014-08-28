@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title><%= title %></title>
+    <link rel="stylesheet" href="/static/bootstrap-3.2.0-dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="/static/bootstrap-3.2.0-dist/css/bootstrap-theme.min.css"/>
+    <link rel="stylesheet" href="/static/custom/css/m.css"/>
+    <script type="text/javascript" src="/static/custom/js/jquery-2.1.1.min.js"></script>
+    <script type="text/javascript" src="/static/bootstrap-3.2.0-dist/js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            $("#price_choice").click(function () {
+                $("#price").html(this.checked ? "￥<%= train.vip_price %>" : "￥<%= train.price %>")
+            })
+        })
+    </script>
+</head>
+<body>
+<div class="ww">
+    <div class="w640">
+        <div class="head">
+            <h2>班级详情</h2>
+        </div>
+        <div class="class_list pjc">
+            <h5 class="XX_course"><b class="ce_name">&nbsp;<%= train.name %></b></h5>
+
+            <div class="pj fix">
+                <dl class="course_name fix">
+                    <dt class="f_l">班号 <%= train.serial_num %></dt>
+                    <dd id="price" class="f_r">￥<%= train.vip_price %></dd>
+                </dl>
+                <dl class="course_name fix">
+                    <dt class="f_l">包就业</dt>
+                    <dd class="f_r">
+                        &bigstar;&nbsp;<input id="price_choice" type="checkbox" style="width: 50" checked/>
+                    </dd>
+                </dl>
+            </div>
+            <!--<div class="pull-left">-->
+            <div class="btn_bmmap fix">
+                <a href="tel:+02166666666" class="btn_map">
+                    联系您的培训专员
+                </a>
+            </div>
+            <!--</div>-->
+        </div>
+        <div class="class_details">
+            <h5 class="title">班级介绍</h5>
+
+            <div class="content_details">
+                <dl class="cdlist fix">
+                    <dt class="f_l">课 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;次</dt>
+                    <dd class="f_r"><%= (!!train.times) ? train.times : 0 %>次</dd>
+                </dl>
+                <dl class="cdlist fix">
+                    <dt class="f_l">上课时间</dt>
+                    <dd class="f_r"><%= train.train_time %></dd>
+                </dl>
+                <dl class="cdlist fix">
+                    <dt class="f_l">上课地点</dt>
+                    <dd class="f_r"><%= train.classroom %></dd>
+                </dl>
+                <dl class="cdlist fix">
+                    <dt class="f_l">报到时间</dt>
+                    <dd class="f_r"><%= train.signin_time %></dd>
+                </dl>
+                <dl class="cdlist fix">
+                    <dt class="f_l">备 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;注</dt>
+                    <dd class="f_r"><%= train.train_desc %></dd>
+                </dl>
+                <dl class="cdlist fix">
+                    <dt class="f_l">课程简介</dt>
+                    <dd class="f_r"><%= train.train_desc %></dd>
+                </dl>
+                <dl class="cdlist fix">
+                    <dt class="f_l">要求基础</dt>
+                    <dd class="f_r"><%= train.requirement %></dd>
+                </dl>
+                <dl class="cdlist fix">
+                    <dt class="f_l">适合人群</dt>
+                    <dd class="f_r"><%= train.student_desc %></dd>
+                </dl>
+                <dl class="cdlist fix">
+                    <dt class="f_l">您将学到</dt>
+                    <dd class="f_r"><%= train.obtain_skill %></dd>
+                </dl>
+                <dl class="cdlist fix">
+                    <dt class="f_l">您将成为</dt>
+                    <dd class="f_r"><%= train.target_role %></dd>
+                </dl>
+                <dl class="cdlist fix">
+                    <dt class="f_l">就业公司</dt>
+                    <dd class="f_r"><%= train.purpose_org %></dd>
+                </dl>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
