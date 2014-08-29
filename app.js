@@ -17,7 +17,7 @@ app.locals = {
 /// view engine setup
 app.set('views', path.join(__dirname, "views"));
 app.set('view engine', 'ejs');
-app.use(compression({threshold: '5kb'}));
+//app.use(compression({threshold: '5kb'}));
 app.use("/static", express.static(path.join(__dirname, "/static"), { maxAge: 86400000 }));
 app.use(cookieParser());
 app.use(bodyParser.urlencoded({extended: true}));

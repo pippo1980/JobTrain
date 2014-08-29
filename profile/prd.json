@@ -41,7 +41,7 @@
     "http": {
         "address": "http://baojiuye.inmovation.com",
         "host": "0.0.0.0",
-        "port": 80
+        "port": 8080
     },
     "wechat": {
         "app_id": "wx70694206b7dda51f",
