@@ -1,7 +1,7 @@
 profile=$1
 
 ##kill process
-PID=`ps -ef | grep node | grep $profile | grep -v ' grep' | awk '{print $2}'`
+PID=`ps -ef | grep node | grep app |grep $profile | grep -v ' grep' | awk '{print $2}'`
 if [ ! -e $PID ]
 	then
 	    echo "kill $profile PID is $PID"
